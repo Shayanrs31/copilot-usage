@@ -1,0 +1,1 @@
+{"version":2,"creationDate":1790100000000,"customTitle":"Older format session","requests":[{"modelId":"copilot/model-a","message":{"text":"old format question"},"promptTokens":30000,"completionTokens":500,"copilotCredits":3.0,"response":[]}]}

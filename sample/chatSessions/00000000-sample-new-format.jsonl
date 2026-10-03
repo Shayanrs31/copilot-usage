@@ -1,0 +1,11 @@
+{"kind":0,"v":{"version":3,"creationDate":1790000000000,"customTitle":"Sample session","requests":[]}}
+{"kind":2,"k":["requests"],"v":[{"requestId":"r1","modelId":"copilot/model-a","message":{"text":"sample question one"},"modeInfo":{"kind":"agent","isBuiltin":true,"telemetryModeName":"agent"},"variableData":{"variables":[{"kind":"promptFile","name":"prompt:copilot-instructions.md"}]},"response":[]}]}
+{"kind":1,"k":["requests",0,"promptTokens"],"v":40000}
+{"kind":1,"k":["requests",0,"completionTokens"],"v":800}
+{"kind":1,"k":["requests",0,"copilotCredits"],"v":4.0}
+{"kind":1,"k":["requests",0,"promptTokenDetails"],"v":[{"category":"System","label":"System Instructions","percentageOfPrompt":45},{"category":"System","label":"Tool Definitions","percentageOfPrompt":50},{"category":"User Context","label":"Messages","percentageOfPrompt":5}]}
+{"kind":2,"k":["requests",0,"response"],"v":[{"kind":"toolInvocationSerialized","toolId":"read_file","invocationMessage":"Read file"}]}
+{"kind":2,"k":["requests"],"v":[{"requestId":"r2","modelId":"copilot/model-b","message":{"text":"sample question two"},"modeInfo":{"kind":"agent","isBuiltin":false,"modeName":"planner"},"response":[]}]}
+{"kind":1,"k":["requests",1,"promptTokens"],"v":90000}
+{"kind":1,"k":["requests",1,"copilotCredits"],"v":12.0}
+{"kind":1,"k":["requests",1,"promptTokenDetails"],"v":[{"label":"System Instructions","percentageOfPrompt":20},{"label":"Tool Definitions","percentageOfPrompt":22},{"label":"Messages","percentageOfPrompt":28},{"label":"Tool Results","percentageOfPrompt":30}]}

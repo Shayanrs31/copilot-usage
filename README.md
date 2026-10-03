@@ -3,37 +3,43 @@
 See where your GitHub Copilot Chat tokens actually go, from the history VS Code already keeps on
 your disk.
 
-One Python file, no packages to install, read-only. It works on Windows, macOS and Linux, with
-VS Code, VS Code Insiders, VSCodium and Code - OSS.
+One C# file (`copilot_usage.cs`), run directly as a .NET 10 single-file app: no project, no
+packages, read-only. It works on Windows, macOS and Linux, with VS Code, VS Code Insiders, VSCodium
+and Code - OSS.
 
 ## Why
 
 Each Copilot request is built from the context available to it: instructions, tool definitions,
 the chat history and tool results. Some of that recurs on every request, and some of it grows as a
-session goes on. This script measures both, from your own data, so you can see which one to fix.
+session goes on. This app measures both, from your own data, so you can see which one to fix.
 
 ## Requirements
 
-- Python 3.8 or later
+- The .NET 10 SDK
 - VS Code with GitHub Copilot Chat, and some chat history
 
 ## Run it
 
+Options go after `--`. The first run takes a few seconds to build.
+
 ```bash
 # the workspace for the folder you are in
-python copilot_usage.py
+dotnet run copilot_usage.cs
 
 # the workspace for another folder
-python copilot_usage.py --repo ~/src/my-app
+dotnet run copilot_usage.cs -- --repo ~/src/my-app
 
 # every workspace that has chat history
-python copilot_usage.py --list
+dotnet run copilot_usage.cs -- --list
 
 # all workspaces together
-python copilot_usage.py --all
+dotnet run copilot_usage.cs -- --all
 
 # one period, for a before-and-after comparison
-python copilot_usage.py --since 2026-10-01 --until 2026-10-31
+dotnet run copilot_usage.cs -- --since 2026-10-01 --until 2026-10-31
+
+# all options
+dotnet run copilot_usage.cs -- --help
 ```
 
 The summary prints to the screen. `summary.txt`, `sessions.csv` and `requests.csv` go to a
@@ -42,7 +48,7 @@ The summary prints to the screen. `summary.txt`, `sessions.csv` and `requests.cs
 To check the parser without your own history:
 
 ```bash
-python copilot_usage.py --chat-folder sample/chatSessions
+dotnet run copilot_usage.cs -- --chat-folder sample/chatSessions
 ```
 
 ## What the summary tells you
@@ -72,11 +78,11 @@ folder open are in `globalStorage/emptyWindowChatSessions/` (included with `--al
 
 Newer VS Code versions write each session as an operation log (`.jsonl`): the first line is the
 full state, and each later line sets (`kind: 1`), appends (`kind: 2`) or deletes (`kind: 3`) a value
-at a path. Older versions write one JSON document (`.json`). The script reads both.
+at a path. Older versions write one JSON document (`.json`). The app reads both.
 
 ## Privacy
 
-- The script only reads. It sends nothing anywhere.
+- The app only reads. It sends nothing anywhere.
 - By default, the output has **no message text and no session titles**. `--include-messages`
   adds session titles and the first 160 characters of each message. Keep that output private and
   out of git.
